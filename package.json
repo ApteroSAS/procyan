@@ -2,6 +2,7 @@
   "name": "procyan",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://meet.aptero.co/service/static/procyan/",
   "dependencies": {
     "@mozilla/lilypad-ui": "^2.0.0",
     "@testing-library/jest-dom": "^5.16.5",

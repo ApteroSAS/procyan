@@ -14,22 +14,22 @@ export default function ExerciceField({UnitId, uuid}){
         if(fake){
             await new Promise(r => setTimeout(r, 1000));
             return {
-                "translationCode": "fr",
+                "translationCode": "es",
                 "problemType": {
                     "code": "multiple",
                     "value": "객관식"
                 },
-                "problem": "Trouvez combien d'entiers non négatifs sont au total parmi les listes de nombres suivantes.\n$\\displaystyle 2,\\ 0,\\ -4,\\ \\frac{1}{2},\\ -\\frac{1}{2},\\ -\\frac{1}{3}$",
+                "problem": "Encuentra cuántos enteros no negativos hay en total entre las siguientes listas de números.\n$\\displaystyle 1,\\ -5,\\ -\\frac{3}{5},\\ -2,\\ \\frac{1}{4},\\ -\\frac{5}{2}$",
                 "choiceList": [
-                    "$1$",
-                    "$2$",
-                    "$4$",
+                    "$0$",
                     "$5$",
-                    "$0$"
+                    "$3$",
+                    "$1$",
+                    "$2$"
                 ],
                 "drawUseProblem": false,
                 "drawImageByteProblem": null,
-                "explanation": "(A) les entiers non négatifs sont/est ${0, 2} \\Longrightarrow 2$.",
+                "explanation": "(A) los enteros no negativos son ${1} \\Longrightarrow 1$.",
                 "drawUseExpl": false,
                 "drawImageByteExpl": null,
                 "answerResult": {
@@ -41,14 +41,14 @@ export default function ExerciceField({UnitId, uuid}){
                     "inputAnswer": null,
                     "sec": null
                 },
-                "uuid": "20230703223357-16390b8f-c84d-4ac0-a274-d9db9139ed31"
+                "uuid": "20230803220447-e05106e5-7c76-441d-be3b-f32973cc3916"
             }
         }
 
         const headers = new Headers();
         headers.append("x-request-to", "DKDNidkwinDKSNdiwnd")
         //13.209.103.192:9901   ---   https://api-service.solve-mate.com/"
-        const baseUrl = "http://13.209.103.192:9901/"
+        const baseUrl = "http://api-service.solve-mate.com/"
         const createPostPath = `v1/api/solve/sample/${currentUnitId}`
         const recallGetPath = `v2/api/solve/sample/${currentUUID}`
         let query, method
@@ -81,17 +81,12 @@ export default function ExerciceField({UnitId, uuid}){
     return (
         <>
             {exercice === undefined ? <p>Loading..</p> :
-                <div>
-                    <main
-                        data-theme="light"
-                        style={{
-                        background: '#eeeeee',
-                        color: '#000000',
-                        fontSize: '15px',
-                        padding: '30px'
-                        
+                <div
+                    style={{
+                            background: '#eeeeee',
                         }}
-                    >
+                >
+
                         <p><Latex displayMode={true}>{exercice.problem}</Latex></p>
                         <p><Latex displayMode={true}>{exercice.explanation}</Latex></p>
                         <ul>
@@ -102,7 +97,7 @@ export default function ExerciceField({UnitId, uuid}){
                                         <Button 
                                             category="primary_outline"
                                             onClick= {function handleClick(choice, index){}}
-                                            text={index + ".  " + choice} //{`${index} $") " ${choice}`}  //{index} + {choice}
+                                            text={<Latex displayMode={true}>{choice}</Latex>} //{`${index} $") " ${choice}`}  //{index} + {choice}
                                             type="button"
                                             size="small"
 
@@ -110,7 +105,6 @@ export default function ExerciceField({UnitId, uuid}){
                                     </li>)
                             }
                         </ul>
-                    </main>
                 </div>
             }
         </>

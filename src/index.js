@@ -7,7 +7,16 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <main
+          className={'App'}
+          data-theme="light"
+          style={{
+              fontSize: '15px',
+              padding: '30px'
+          }}
+      >
+        <App />
+      </main>
   </React.StrictMode>
 );
 

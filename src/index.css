@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+main[data-theme='light'].App,
+:root {
+  --color-interaction-primary: #c70000;
+  --color-interaction-primary-hover: #960606;
+  --color-interaction-primary-active: #960606;
+  --color-interaction-primary-disabled: rgba(176, 176, 176, 0.5);
+  --color-interaction-primary-alt: #ffffff;
+  --color-interaction-primary-alt-hover: #fde8e8;
+  --color-interaction-primary-alt-active: #f0cbcb;
+  --color-interaction-primary-alt-disabled: #e7e7e7;
+}
