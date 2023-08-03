@@ -7,12 +7,15 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <main
+      <main //This should affect the Dialog "App" background
           className={'App'}
           data-theme="light"
           style={{
-              fontSize: '15px',
-              padding: '30px'
+              /*fontSize: '15px',
+              padding: '20px',
+              margin: '10px',
+              background: '#ffffff',
+              borderRadius: '20px'*/
           }}
       >
         <App />

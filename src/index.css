@@ -14,12 +14,20 @@ code {
 
 main[data-theme='light'].App,
 :root {
-  --color-interaction-primary: #c70000;
-  --color-interaction-primary-hover: #960606;
-  --color-interaction-primary-active: #960606;
+  /*Fonts*/
+  --font-primary: 'Montserrat';
+  --font-secondary: 'Space Grotesk';
+  --font-backup: 'Arial';
+
+  /**/
+  --color-text-reverse: #3e649b;
+  
+  --color-interaction-primary: #ffffff;
+  --color-interaction-primary-hover: #eff4fa;
+  --color-interaction-primary-active: #eff4fa;
   --color-interaction-primary-disabled: rgba(176, 176, 176, 0.5);
-  --color-interaction-primary-alt: #ffffff;
-  --color-interaction-primary-alt-hover: #fde8e8;
-  --color-interaction-primary-alt-active: #f0cbcb;
-  --color-interaction-primary-alt-disabled: #e7e7e7;
+  --color-interaction-primary-alt: #201b1b;
+  --color-interaction-primary-alt-hover: #111111;
+  --color-interaction-primary-alt-active: #332c2c;
+  --color-interaction-primary-alt-disabled: #353535;
 }
