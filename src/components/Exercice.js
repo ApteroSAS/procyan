@@ -1,6 +1,10 @@
 import {useState} from "react";
 import Latex from "react-latex";
 
+import * as React from 'react';
+import { Button } from '@mozilla/lilypad-ui';
+import '@mozilla/lilypad-ui/dist/styles/theme.scss';// Import the Lilypad CSS
+
 export default function ExerciceField({UnitId, uuid}){
     const [exercice, setExercice] = useState(undefined);
     const [translationCode, setTranslationCode] = useState(navigator.language.split('-')[0]);
@@ -69,16 +73,44 @@ export default function ExerciceField({UnitId, uuid}){
             setExercice(data)
         })
     }
+
+    const handleClick = () => {
+        // Perform desired action here!
+    }
     initExercice()
     return (
         <>
             {exercice === undefined ? <p>Loading..</p> :
                 <div>
-                    <p><Latex displayMode={true}>{exercice.problem}</Latex></p>
-                    <p><Latex displayMode={true}>{exercice.explanation}</Latex></p>
-                    <ul>
-                        {exercice.choiceList.map((choice, index) => <li key={index}><Latex displayMode={true}>{choice}</Latex></li>)}
-                    </ul>
+                    <main
+                        data-theme="light"
+                        style={{
+                        background: '#eeeeee',
+                        color: '#000000',
+                        fontSize: '15px',
+                        padding: '30px'
+                        
+                        }}
+                    >
+                        <p><Latex displayMode={true}>{exercice.problem}</Latex></p>
+                        <p><Latex displayMode={true}>{exercice.explanation}</Latex></p>
+                        <ul>
+                            {
+                                exercice.choiceList.map((choice, index) => 
+                                    //<li key={index}> <Latex displayMode={true}>{choice}</Latex>
+                                    <li key={index}>
+                                        <Button 
+                                            category="primary_outline"
+                                            onClick= {function handleClick(choice, index){}}
+                                            text={index + ".  " + choice} //{`${index} $") " ${choice}`}  //{index} + {choice}
+                                            type="button"
+                                            size="small"
+
+                                        />
+                                    </li>)
+                            }
+                        </ul>
+                    </main>
                 </div>
             }
         </>
