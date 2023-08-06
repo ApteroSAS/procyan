@@ -213,8 +213,24 @@ export default function ExerciceForm({unitId,onUpdateUnitId}) {
 
     return (
         <>
-            <form onSubmit={onSubmit}>
-                <select id="exercices" defaultValue={unitId}>
+            <form
+                onSubmit={onSubmit}
+                style={{ display: 'flex', alignItems: 'center' }}
+            >
+                <select 
+                    id="exercices" 
+                    defaultValue={unitId}
+                    style={{
+                        marginRight: '10px',
+                        padding: '5px',
+                        borderRadius: '10px',
+                        boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
+                        color: '#3e649b',
+                        fontSize: '16px',
+                        fontFamily: 'Montserrat',
+                        padding: '5px 10px'
+                    }}
+                >
                     {options.map((option) => {
                         return <option
                                     key={option.value}
@@ -222,8 +238,19 @@ export default function ExerciceForm({unitId,onUpdateUnitId}) {
                                 >{option.label}</option>
                     })}
                 </select>
-                <button type="submit" value="Submit">Create</button>
+                <button
+                    type="submit"
+                    value="Submit"
+                    style={{
+                        background: 'white',
+                        color: 'black',
+                        padding: '10px 20px',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                        boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)'
+                    }}
+                >Create</button>
             </form>
-
         </>)
 }

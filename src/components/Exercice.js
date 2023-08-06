@@ -3,7 +3,7 @@ import Latex from "react-latex";
 
 import * as React from 'react';
 import { Button } from '@mozilla/lilypad-ui';
-import '@mozilla/lilypad-ui/dist/styles/theme.scss';// Import the Lilypad CSS
+import '@mozilla/lilypad-ui/dist/styles/theme.scss'; // Import the Lilypad CSS
 
 export default function ExerciceField({UnitId, uuid}){
     const [exercice, setExercice] = useState(undefined);
