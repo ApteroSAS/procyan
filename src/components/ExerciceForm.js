@@ -211,42 +211,44 @@ export default function ExerciceForm({unitId,onUpdateUnitId}) {
         onUpdateUnitId(e.target[0].value)
     }
 
-    return (
+    return ( //This whole section represents the item selector
         <>
             <form
                 onSubmit={onSubmit}
-                style={{ display: 'flex', alignItems: 'center' }}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}
             >
                 <select 
-                    id="exercices" 
+                    id="exercices"  //The Dropdown item selection box
                     defaultValue={unitId}
                     style={{
+                        marginLeft: '2px',
                         marginRight: '10px',
-                        padding: '5px',
                         borderRadius: '10px',
                         boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
                         color: '#3e649b',
                         fontSize: '16px',
                         fontFamily: 'Montserrat',
-                        padding: '5px 10px'
+                        padding: '5px 10px',
+                        maxWidth: '65%'
                     }}
                 >
                     {options.map((option) => {
                         return <option
-                                    key={option.value}
-                                    value={option.value}
-                                >{option.label}</option>
+                            key={option.value}
+                            value={option.value}
+                            >{option.label}
+                        </option>
                     })}
                 </select>
                 <button
-                    type="submit"
+                    type="submit" //The Submit button on the bottom right
                     value="Submit"
                     style={{
                         background: 'white',
                         color: 'black',
                         padding: '10px 20px',
                         border: 'none',
-                        borderRadius: '5px',
+                        borderRadius: '10px',
                         cursor: 'pointer',
                         boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)'
                     }}

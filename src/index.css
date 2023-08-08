@@ -31,3 +31,11 @@ main[data-theme='light'].App,
   --color-interaction-primary-alt-active: #332c2c;
   --color-interaction-primary-alt-disabled: #353535;
 }
+
+ul {
+  list-style:none;
+}
+
+ul.choiseList {
+  list-style:none;
+}
