@@ -33,9 +33,60 @@ main[data-theme='light'].App,
 }
 
 ul {
-  list-style:none;
+  list-style:none; /*No dots!*/
 }
 
-ul.choiseList {
-  list-style:none;
+select{
+  direction: rtl;
 }
+select option{
+  direction: ltr;
+}
+
+form select#exercices  {
+  margin-left: 2px;
+  margin-right: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #3e649b;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  padding: 5px 10px;
+  max-width: min(calc(100vw - 11em), 35em);
+  border: none;
+}
+
+ul.choiseList { /*Control the OURSIDE of the BUTTONS*/
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 5px 1em;
+  margin: 5px 0 5px; 
+}
+
+div.choiceQuestions { /*Problem and explaination*/
+  padding: 1em;
+  background: #ffffff;
+  margin-top: 30px;
+  margin-right: 40px;
+  border-radius: 20px;
+  /*box-shadow: 0px 2px 5px #265f8e50;*/
+  font-size: 16px;
+}
+
+ul.choiseList Button { /*Control the CONTENT of the BUTTONS*/
+  padding: 1em 3em 1em 1em;
+  min-width: 10em;
+  min-height: 4.2 em;
+  margin: 5px 0 5px; 
+  display: flex;
+  justify-content: flex-start;
+  
+  border: none;
+  background-color : white;
+  box-shadow: 0px 2px 5px #265f8e50;
+  border-radius : 10px;
+  transition-duration: 0.2s;
+}
+

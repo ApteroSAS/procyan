@@ -82,29 +82,10 @@ export default function ExerciceField({UnitId, uuid}){
         <>
             {exercice === undefined ? <p>Loading..</p> :
                 
-                <div
+                <div className="choiceQuestions" 
                     /*
                         This section contains the PROBLEM and the EXPLAINATION
                     */
-                    //This will set the Style dialog background, NOT the webpage!
-                    style={{
-                        background: '#ffffff',
-                        padding: '20px',
-                        marginTop: '30px',
-                        marginRight: '40px',
-                        borderRadius: '20px',
-                        boxShadow: '0px 2px 5px #265f8e50',
-                        fontSize: '16px',
-                        
-                        /*
-                        display: 'flex',
-                        flexDirection: 'column',
-                        flexBasis: '100px',
-                        flexGrow: '12',
-                        justifyContent: 'space-around',
-                        width: '100%'
-*/
-                    }}
                 >
                     <p><h3><Latex displayMode={true}>{exercice.problem}</Latex></h3></p>
                     <p><Latex displayMode={true}>{exercice.explanation}</Latex></p>
@@ -117,19 +98,12 @@ export default function ExerciceField({UnitId, uuid}){
                         This section contains the ANSWER BUTTONS
                         (Note: I separate the script to have the answers outside the main BOX)
                     */
-                    <li key={index}
-                        style={{
-                            margin: "15px 0 15px -12px" ,
-                            display: 'flex',
-                            justifyContent: 'flex-start',
-                            
-                            //Remember that Lilypad uses it's own parameters on some "styles"
-                        }}>
+                    <li key={index}>
                         <Button
                             category="primary_solid"
                             onClick={function handleClick(choice, index) { }}
                             //text={<Latex displayMode={true}>{choice}</Latex>} //Original
-                            text={<Latex displayMode={false}>{String.fromCharCode(65 + index) + ". " + choice}</Latex>} //+Alphabet Value
+                            text={<Latex displayMode={false}>{String.fromCharCode(65 + index)+ ". " + choice}</Latex>} //+Alphabet Value
                             type="button"
                             size="large"
                             

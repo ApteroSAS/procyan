@@ -213,24 +213,13 @@ export default function ExerciceForm({unitId,onUpdateUnitId}) {
 
     return ( //This whole section represents the item selector
         <>
-            <form
+            <form //class="optionsDropdown"
                 onSubmit={onSubmit}
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}
             >
                 <select 
                     id="exercices"  //The Dropdown item selection box
                     defaultValue={unitId}
-                    style={{
-                        marginLeft: '2px',
-                        marginRight: '10px',
-                        borderRadius: '10px',
-                        boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
-                        color: '#3e649b',
-                        fontSize: '16px',
-                        fontFamily: 'Montserrat',
-                        padding: '5px 10px',
-                        maxWidth: '65%'
-                    }}
                 >
                     {options.map((option) => {
                         return <option
