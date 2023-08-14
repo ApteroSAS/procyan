@@ -25,11 +25,13 @@ main[data-theme='light'].App,
   --color-interaction-primary: #ffffff;
   --color-interaction-primary-hover: #eff4fa;
   --color-interaction-primary-active: #eff4fa;
-  --color-interaction-primary-disabled: rgba(176, 176, 176, 0.5);
+  --color-interaction-primary-disabled: #eff4fa;
   --color-interaction-primary-alt: #201b1b;
   --color-interaction-primary-alt-hover: #111111;
   --color-interaction-primary-alt-active: #332c2c;
   --color-interaction-primary-alt-disabled: #353535;
+
+
 }
 
 ul {
@@ -71,22 +73,45 @@ div.choiceQuestions { /*Problem and explaination*/
   margin-top: 30px;
   margin-right: 40px;
   border-radius: 20px;
-  /*box-shadow: 0px 2px 5px #265f8e50;*/
   font-size: 16px;
 }
 
 ul.choiseList Button { /*Control the CONTENT of the BUTTONS*/
   padding: 1em 3em 1em 1em;
   min-width: 10em;
-  min-height: 4.2 em;
   margin: 5px 0 5px; 
   display: flex;
   justify-content: flex-start;
   
   border: none;
   background-color : white;
-  box-shadow: 0px 2px 5px #265f8e50;
   border-radius : 10px;
   transition-duration: 0.2s;
 }
+
+/*Control the CONTENT of the BUTTONS (Only if is Hovered/Focus/Disabled)*/
+ul.choiseList Button:hover, ul.choiseList Button:focus, ul.choiseList Button:disabled { 
+  border: none;
+  color: #3e649b;
+  
+}
+
+/*Control the CONTENT of the BUTTONS!*/
+
+ul.choiseList Button[mymode="Correct"] {
+  background-color : #ffffff;
+  box-shadow: 0px 2px 5px #67ba0f;
+  color: #3e649b;
+}
+
+ul.choiseList Button[mymode="Incorrect"] {
+  background-color : #eff4fa;
+  box-shadow: 0px 2px 5px #eb5e47;
+  color: #3e649b;
+  /*font-style: italic;*/ /*Not used since Procyan text overwrites font attributes*/
+}
+
+
+
+
 
