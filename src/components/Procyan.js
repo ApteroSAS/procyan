@@ -43,6 +43,9 @@ export default function Procyan() {
     
     }, []);
 
+    //Only show the second dropdown if we have at least 2 exercices
+    const secondDropdown = exerciceList.length > 1 ? <ExerciceForm unitId={exerciceList[exerciceList.length-1].unitId} onUpdateUnitId={addExercice} /> : null;
+
     //<li> is the Dropdown list
     //{listItems} is the resulting Content
     return (
@@ -52,6 +55,7 @@ export default function Procyan() {
                 </li>
 
                 {listItems}
+                {secondDropdown}
             </ul>
         </>
     );

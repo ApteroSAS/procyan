@@ -69,9 +69,40 @@ export default function ExerciceField({UnitId, uuid}){
         return data;
     
     }
-    var register_uuid = undefined;
+    
+    async function callAPIanswer(currentUUID = undefined, inputAnswer, sec = 3.0) {
+    
+        const headers = new Headers();
+        headers.append("x-request-to", "DKDNidkwinDKSNdiwnd")
+        headers.append("Content-Type", "application/json") // Set content type to application/json
+        
+        const baseUrl = "https://api-service.solve-mate.com/"
+        const answerPath = `v1/api/solve/sample/answer`
+        const url = new URL(baseUrl + answerPath);
+        const method = "POST"
+        console.log("Post API: Get answer")
+        
+        const body = {
+            uuid: currentUUID,
+            inputAnswer,
+            sec
+        };
+        
+        const options = {
+            method: method,
+            headers: headers,
+            body: JSON.stringify(body)
+        }
+
+        const response = await fetch(url, options);
+        const data = await response.json();
+        return data;
+    }
+
+
     var ignoreAPI = true; //the api is called twice (for some reason) and we are running out of time c:
     function initExercice(){
+
         if (ignoreAPI === false) {ignoreAPI = true; return;} else {ignoreAPI = false;}
         if(exercice !== undefined) return;
 
@@ -80,35 +111,40 @@ export default function ExerciceField({UnitId, uuid}){
             console.log(data)
             setExercice(data)
             console.log("QUESTION uuid get: "+data.uuid)
-            register_uuid = data.uuid;
         })
     }
 
-    const handleClick = (choice, index, buttonid, _uuid) => {
+    const handleClick = (index, buttonidbase, _uuid) => {
         // Perform desired action here!
-        setSelectedChoice(choice);
+        
+        setSelectedChoice(index);
         console.log("Option Clic");
-        
+        console.log("Button._uuid: "+_uuid);
 
-        console.log("Button._uuid:"+_uuid);
-
-        callAPI(undefined, _uuid).then((data) => {
+        //Get the answer from the API
+        //Note: We add +1 because the API starts counting from 1
+        callAPIanswer(_uuid,index+1).then((data) => {
             console.log(data)
-            console.log("RESPONSE get: "+data.uuid)
+            console.log("ANSWER get: "+data.result)
+        
+        
+            const answer = data.correctValue-1;
+
+            //Set pressed button attribute to Correct/Incorrect for the CSS
+            const selbutton = document.getElementById(buttonidbase+index);
+            
+            if (answer === index)
+            {
+                selbutton.setAttribute("mymode", "Correct");
+            }
+            else
+            {
+                selbutton.setAttribute("mymode", "Incorrect");
+
+                const corebutton = document.getElementById(buttonidbase+answer);
+                corebutton.setAttribute("mymode", "Correct");
+            }
         })
-        
-        //Set pressed button attribute to Correct/Incorrect for the CSS
-        
-        const button = document.getElementById(buttonid);
-        
-        if (true) //(??? is correct)
-        {
-            button.setAttribute("mymode", "Correct");
-        }
-        else
-        {
-            button.setAttribute("mymode", "Incorrect");
-        }
     }
 
     
@@ -135,20 +171,13 @@ export default function ExerciceField({UnitId, uuid}){
                     */
                    
                     <li key={index} className="Buttons">
-                        
                         <Button 
-                            /*
-                                The id is being used to determinate how the selected
-                                answer should look through CSS on the index.css file
-                                id={"aButton-"+UnitId+"-"+index}
-                                should end up looking like:
-                                aButton-126-6
-                            */
                             //category={choice===answer?"secondary_solid":"primary_solid"}
                             category="primary_solid"
-                            id={"aButton-"+UnitId+"-"+index}
+                            id = {"Button-"+exercice.uuid+"-"+index}
                             //classProp={exercice.uuid}
-                            onClick={() => handleClick(choice,index,"aButton-"+UnitId+"-"+index,exercice.uuid)}
+                            onClick={() => handleClick(index,"Button-"+exercice.uuid+"-",exercice.uuid)}
+                            
                             text={<Latex displayMode={false}>{String.fromCharCode(65 + index)+ ". " + choice}</Latex>} //+Alphabet Value
                             type="button"
                             size="large"
