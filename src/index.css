@@ -49,7 +49,7 @@ form select#exercices  {
   margin-left: 2px;
   margin-right: 10px;
   border-radius: 10px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 5px #265f8e50;
   color: #3e649b;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -74,6 +74,11 @@ div.choiceQuestions { /*Problem and explaination*/
   margin-right: 40px;
   border-radius: 20px;
   font-size: 16px;
+}
+
+/*We add some space between fractions so they don't look cramped up!*/
+div.choiceQuestions p:has(.frac-line) {
+  line-height: 3em;
 }
 
 ul.choiseList Button { /*Control the CONTENT of the BUTTONS*/
@@ -111,6 +116,41 @@ ul.choiseList Button[mymode="Incorrect"] {
   /*font-style: italic;*/ /*Not used since Procyan text overwrites font attributes*/
 }
 
+.langSelector {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: 5px 3em;
+  margin: 20px 0; 
+}
+
+.langSelector select {
+  padding: 9px 12px 9px 7px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px #265f8e50;
+  color: #3e649b;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 900;
+}
+
+.optionsCreate {
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px #265f8e50;
+  color: #3e649b;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: 900;
+
+  background: white;
+  padding: 9px 15px;
+
+}
 
 
 

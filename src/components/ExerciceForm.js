@@ -229,18 +229,9 @@ export default function ExerciceForm({unitId,onUpdateUnitId}) {
                         </option>
                     })}
                 </select>
-                <button
+                <button class="optionsCreate"
                     type="submit" //The Submit button on the bottom right
                     value="Submit"
-                    style={{
-                        background: 'white',
-                        color: 'black',
-                        padding: '10px 20px',
-                        border: 'none',
-                        borderRadius: '10px',
-                        cursor: 'pointer',
-                        boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)'
-                    }}
                 >Create</button>
             </form>
         </>)

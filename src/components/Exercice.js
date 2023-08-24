@@ -5,9 +5,17 @@ import * as React from 'react';
 import { Button } from '@mozilla/lilypad-ui';
 import '@mozilla/lilypad-ui/dist/styles/theme.scss'; // Import the Lilypad CSS
 
+import { LanguageForm } from './LanguageForm';
+
 export default function ExerciceField({UnitId, uuid}){
     const [exercice, setExercice] = useState(undefined);
-    const [translationCode, setTranslationCode] = useState(navigator.language.split('-')[0]);
+
+    //const [translationCode, setTranslationCode] = useState(navigator.language.split('-')[0]);
+
+    let translationCode = LanguageForm(1);
+
+    console.log("translationCode: "+translationCode)
+    
     const [selectedChoice, setSelectedChoice] = useState(null);
 
     async function callAPI(currentUnitId, currentUUID = undefined, fake = false) {
@@ -53,6 +61,7 @@ export default function ExerciceField({UnitId, uuid}){
         const createPostPath = `v1/api/solve/sample/${currentUnitId}` //Short val
         const recallGetPath = `v2/api/solve/sample/${currentUUID}` //Long val
         let query, method
+        
         if(currentUUID === undefined){
             query = new URL(baseUrl+ createPostPath);
             method = "POST"
@@ -63,6 +72,7 @@ export default function ExerciceField({UnitId, uuid}){
             method = "GET"
             console.log("Get API")
         }
+
         query.searchParams.append("translationCode", translationCode);
         const response = await fetch(query, {method, headers});
         const data = await response.json();
@@ -158,8 +168,8 @@ export default function ExerciceField({UnitId, uuid}){
                         This section contains the PROBLEM and the EXPLAINATION
                     */
                 >
-                    <h3><Latex displayMode={true}>{exercice.problem}</Latex></h3>
-                    <p><Latex displayMode={true}>{exercice.explanation}</Latex></p>
+                    <h3><Latex displayMode={false}>{exercice.problem}</Latex></h3>
+                    <p class="explaination"><Latex displayMode={false}>{exercice.explanation}</Latex></p>
                 </div>
             }
             
